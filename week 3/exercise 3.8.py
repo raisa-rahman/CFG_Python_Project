@@ -14,36 +14,33 @@
 
 import random
 def random_number():
-    random_number = random.randint(1, 100)
-    return random_number
+    return random.randint(1, 100)
 
 def random_colour():
     random_colour = random.randint(1, 2)
     if random_colour != 1:
-        colour = 'red'
+        return 'red'
     else:
-        colour = 'black'
-    return colour
+        return 'black'
 
-
-amount = input('How much would you like to bet? ')
+amount = float(input('How much would you like to bet? '))
 colour = input('Choose a colour: red or black ')
 number = input('Pick a number between 1 and 100: ')
 
-opponent_colour = colour()
-opponent_number = number()
+opponent_colour = random_colour()
+opponent_number = random_number()
 
 number_win_amount = amount * 2
 number_and_colour_win_amount = amount * 100
 
 if colour == random_colour():
-    print('The colour your opponent chose {} so you get to keep {}'.format(colour, amount))
+    print('The colour your opponent chose {} so you get to keep {}'.format(opponent_colour, amount))
 
 if number == random_number():
-    print('The number your opponent chose {} so you earn {}'.format(random_number(), number_win_amount))
+    print('The number your opponent chose {} so you earn {}'.format(opponent_number, number_win_amount))
 
 if number == random_number() and colour == random_colour():
-    print('The number your opponent chose {}, the colour your opponent chose {} so you earn {}'.format(random_number(), random_colour(), number_and_colour_win_amount))
+    print('The number your opponent chose {}, the colour your opponent chose {} so you earn {}'.format(opponent_number, opponent_colour, number_and_colour_win_amount))
 
 if number != random_number() and colour != random_colour():
-    print('The number your opponent chose {}, the colour your opponent chose {} so you earn 0'.format(random_number(), random_colour()))
+    print('The number your opponent chose {}, the colour your opponent chose {} so you earn 0'.format(opponent_number(), opponent_colour()))
